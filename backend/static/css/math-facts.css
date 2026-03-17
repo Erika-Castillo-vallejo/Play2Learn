@@ -1,0 +1,214 @@
+/* ======== GLOBAL ======== */
+body {
+    background-color: rgb(183, 156, 201); 
+  }
+   
+h1 {
+    text-align: center;
+  }
+
+/* ======== NAVBAR ======== */
+.navbar-nav {
+   align-items: center; /* centra los items verticalmente dentro del contenedor */
+  }
+
+.navbar .nav-link {
+   font-size: 1.2rem; /* tamaño más grande (1rem = 16px aprox.) */
+  }
+
+.navbar .nav-link:hover {
+   background-color: #7cbbe8;
+   color: black !important;   /* cambia el color del texto */
+   border-radius: 50%;
+   padding: 0.5rem 1rem;
+   transform: scale(1.50);
+  }
+
+.dropdown-menu {
+   background-color: rgb(209, 136, 217) !important;
+  }
+
+/* Estilo de los enlaces dentro del submenú */
+.dropdown-item {
+   color: black !important;
+   font-weight: bold;
+   font-size: 1.2rem;  /* mismo tamaño que navbar */
+   padding: 0.3rem 0.8rem;
+   border-radius: 5px;
+   transition: all 0.3s ease;
+   text-align: center;
+  }
+
+ /* Color al pasar el mouse */
+.dropdown-item:hover {
+   background-color: rgb(237, 221, 221) !important;
+   color: rgb(189, 22, 39) !important;
+   transform: scale(1.2);
+  }
+
+.center-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem; /* Distancia del menú principal */
+    padding: 1rem;
+    background-color: white; /* Fondo de la caja */
+    border-radius: 10px; /* Bordes redondeados */
+    width: auto;
+    min-width: 200px;
+    max-width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.center-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Submenús en columna */
+    align-items: center; /* Centrar los elementos */
+  }
+
+.center-menu li {
+    position: relative;
+    margin-bottom: 1rem; /* Espaciado entre elementos */
+    font-size: 1.5rem;
+  }
+
+.center-menu li a {
+    text-decoration: none;
+    color: black;
+  }
+
+.center-menu li a:hover {
+    color: rgb(189, 22, 39);
+  }
+
+.center-menu li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgb(240, 240, 240);
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+.center-menu li:hover ul {
+    display: block;
+  }
+
+.list {
+    text-align: center;
+    list-style-position: inside;
+    font-size: 1.5rem;
+    margin-top: 225px;
+    padding: 1rem;
+  }
+
+.inline-2 {
+    background: pink;
+    border: solid black;
+    padding: 0rem;
+  }
+
+.inline-1 {
+    background: pink;
+    border: solid black;
+    padding: 1rem;
+  }
+
+@media (max-width: 768px) {
+  .social-icons {
+     gap: 0.8rem;  /* Reducir el espacio entre iconos en pantallas pequeñas */
+    }
+
+  .social-icons a {
+     font-size: 1.2rem;  /* Reducir el tamaño de los iconos en pantallas pequeñas */
+    }
+  }
+
+.go-link {
+    display: grid; /* Para que sea un elemento alineado */
+    margin-left: 1rem; /* Espacio a la derecha de la caja */
+    background-color: #a6aaad; /* Fondo azul */
+    color: rgb(11, 11, 11); /* Texto blanco */
+    text-decoration: none; /* Quitar subrayado */
+    padding: 0.5rem 1rem; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 2rem; /* Tamaño del texto */
+  }
+  
+  /* Efecto hover para el enlace GO */
+.go-link:hover {
+    background-color: #e4f88a; /* Cambiar fondo al pasar el mouse */
+  }
+
+.operation-buttons button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color:  pink;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 200px;
+  }
+  
+.operation-buttons button:hover {
+    background-color: #e4f88a;
+  }
+
+.Operation > a {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.Operation > a::after {
+  content: " ↓";
+  font-size: 1.1rem;
+}
+
+
+   /* ======== FOOTER ======== */
+i {
+    color: rgb(0, 0, 0);
+    padding: 2rem;
+    font-size: 2.3rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+footer .text-dark {
+    -webkit-text-stroke: 0.7px black;
+  }
+
+.container i:hover {
+    color: #0073e6;  /* Cambiar color al pasar el mouse */
+    transform: scale(1.5); 
+  }
+
+.copyright {
+    text-align: left;
+    padding: 1rem;
+    background-color: #f1f1f1;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+/* Borde blanco SOLO en pantallas pequeñas */
+@media (max-width: 768px) {
+  body {
+    border-left: 30px solid #f8f9fa;
+    border-right: 30px solid #f8f9fa;
+  }
+}
+
+  
+  

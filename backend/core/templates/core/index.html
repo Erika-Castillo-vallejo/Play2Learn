@@ -1,0 +1,108 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+
+  <!-- ===== HEADER ===== -->
+  <header class="text-center my-4">
+    <h1 class="display-4">Home</h1>
+    <p class="circle"></p>
+  </header>
+
+  <!-- ===== CITAS ===== -->
+  <div  id="cita-container" class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10">
+      <div class="card border-0 shadow-sm text-center">
+      <p id="cita-1" class="highlight fs-5 m-0"></p>
+    </div>
+   </div>
+  </div>
+ </div>
+
+</div>
+
+    <!-- ===== MAIN PAGE LAYOUT ===== -->
+<div class="container mt-5">
+  <div class="row justify-content-center g-5">
+   
+      <!-- ===== SECCIÓN DE JUEGOS (Bootstrap) ===== -->
+<div class="col-12">
+  <div class="row justify-content-center g-5">
+  <!-- Juego 1 -->
+  <div id="Game-1" class="col-12 col-md-5 text-center">
+    <h2>Game 1</h2>
+    <h3>Anagram Hunts</h3>
+    <p><span class="inline">“Anagram Hunts”</span> <strong>a word game</strong> that challenges players to rearrange the letters of a given word to form as many valid words as possible. For example, from the word “hunts,” players can derive words like “shunt,” “hunt,” “nuts,” and “thus.” The goal is to identify the highest number of combinations within a limited time, testing your linguistic skills and mental agility.</p>
+    <button onclick="location.href='/games/anagram/'" class="btn btn-primary">Play</button>
+  </div>
+  <!-- Juego 2 -->
+   <div id="Game-2" class="col-12 col-md-5 text-center">
+     <h2>Game 2</h2>
+     <h3>Math Facts Practice</h3>
+     <p><span class="inline">“Math Facts Practice”</span> <strong>an educational game</strong> designed to help students enhance their fluency in basic mathematical operations, including addition, subtraction, multiplication, and division. Through interactive activities and progressively challenging levels, players can strengthen their math skills in an engaging and effective manner. The game aims to provide a tool that facilitates consistent practice of fundamental math concepts, adapting to each user’s individual learning pace.</p>
+     <button onclick="location.href='/games/math/'" class="btn btn-primary">Play</button>
+     </div>
+    </div>
+   </div>
+
+   <!-- Imagen -->
+    <div class="col-12 text-center">
+      <img src="{% static 'images/math.png' %}" class="Img-math img-fluid mt-4 floating-img">
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCRIPT DE CITAS ===== -->
+  <script>
+  const citas = [
+  {% for review in reviews %}
+  {
+    texto: "{{ review.review_text|escapejs }} — {{ review.user.first_name|default:'Player'|escapejs }}",
+    clase: "cita-{% cycle '1' '2' '3' %}"
+  }{% if not forloop.last %},{% endif %}
+  {% empty %}
+  {
+    texto: "No reviews yet. Be the first to leave one!",
+    clase: "cita-1"
+  }
+  {% endfor %}
+];
+
+      let indice = 0;
+
+      function cambiarCita() {
+      const citaDiv = document.getElementById("cita-1");
+      citaDiv.classList.add("fade-out");
+
+      setTimeout(() => {
+      citaDiv.classList.remove("cita-1", "cita-2", "cita-3");
+      citaDiv.textContent = citas[indice].texto;
+      citaDiv.classList.add(citas[indice].clase);
+      citaDiv.classList.remove("fade-out");
+      indice = (indice + 1) % citas.length;
+      }, 500);
+    }
+
+    cambiarCita();
+    setInterval(cambiarCita, 10000);
+
+    document.addEventListener("DOMContentLoaded", () => {
+    const img = document.querySelector(".floating-img");
+
+    function checkVisibility() {
+    const rect = img.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+// Cuando la imagen esté a 200px de entrar al viewport → activar animación
+    if (rect.top < windowHeight - 200) {
+      img.classList.add("show");
+    }
+  }
+
+    window.addEventListener("scroll", checkVisibility);
+    checkVisibility();
+  });
+</script>
+
+{% endblock %}

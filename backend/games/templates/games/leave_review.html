@@ -1,0 +1,26 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+<div class="container mt-5" style="max-width:600px;">
+
+<h2 class="mb-4 text-center">Leave a Review</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<div class="mb-3">
+<label class="form-label">Your Review</label>
+<textarea name="review_text" class="form-control" rows="4" required></textarea>
+</div>
+
+<button class="btn btn-primary w-100">
+Submit Review
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}

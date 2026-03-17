@@ -1,0 +1,253 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- ===== HEADER ===== -->
+  <header class="text-center my-4 container">
+     <h1 id="login-title">Log in</h1>
+  </header>
+
+    <!-- ===== LOGIN FORM ===== -->
+<div class="container d-flex justify-content-center">
+  <form id="login-form" class="login-form w-100" style="max-width: 500px;"
+        method="POST" action="/accounts/login/">
+    {% csrf_token %}
+    <!-- Email Field -->
+  <div class="mb-3">
+      <label for="login-email" class="form-label">Email:</label>
+      <input id="login-email" name="login" class="form-control" type="email" placeholder="Enter your email" required>
+ </div>
+    <!-- Password Field -->
+  <div class="mb-3">
+      <label for="password" class="form-label">Password:</label>
+      <input id="password" name="password" class="form-control" type="password" placeholder="Enter your password" required>
+  </div>
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary w-100">Login</button>
+    <!-- Register Link -->
+    <p class="text-center mt-3">
+      Don't have an account? <a href="#" id="show-register" >Register</a>
+  </p>
+ </form>
+</div>
+    <!-- ================= REGISTER FORM ================= -->
+  <div id="register-container" class="container mt-4 d-none" style="max-width:700px;">
+      <h1>Register</h1>
+    <p class="register-text">Please fill out this <strong>Registration form</strong> with the required information</p>
+    <form class="form-container" method="post">
+  
+   <div class="row g-3">
+  <div class="col-md-12">
+    <label for="first-name" class="form-label">Enter Your First Name:</label>
+    <input id="first-name" class="form-control" name="first-name" type="text" pattern="[A-Za-z]+" minlength="3" required>
+  </div>
+
+
+  <div class="col-md-12">
+    <label for="last-name" class="form-label">Enter Your Last Name:</label>
+    <input id="last-name" class="form-control" name="last-name" type="text" minlength="3" required>
+  </div>
+</div>
+
+<div class="row g-3 mt-1">
+    <div class="col-md-12">
+    <label for="phone" class="form-label">Telephone:</label>
+    <input  id="phone" class="form-control" name="telephone" type="tel" placeholder="(555) 555-5555" pattern="^\(?(\d{3})\)?[\-\. ]?(\d{3})[\-\. ]?(\d{4})$">
+    </div>
+<div class="col-md-12">
+    <label for="register-email" class="form-label">Enter Your Email: </label>
+    <input id="register-email" class="form-control" name="email" type="email" placeholder="@gmail.com">
+   </div>
+   </div>
+<div class="col-12">
+    <label for="new-password" class="form-label">Create a New password</label>
+    <input id="new-password" class="form-control" name="new-password" type="password" pattern=".{8,}" required>
+  </div>
+
+
+<fieldset class="row g-3 mt-3">
+     <!-- Radios -->
+    <div class="form-check form-check-inline">
+    <input class="form-check-input" id="personal-account" type="radio" name="account-type" required>
+    <label class="form-check-label" for="personal-account">Personal account</label>
+    </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="account-type" id="business-account">
+    <label class="form-check-label" for="business-account">Business account</label>
+  </div>
+     <div class="form-check mt-2">
+      <input class="form-check-input" type="checkbox" id="terms-and-conditions" name="terms-and-conditions" required>
+      <label class="form-check-label" for="terms-and-conditions">
+        I accept the <a href="#">Terms and Conditions</a>
+      </label>
+  </div>
+</fieldset>
+  <fieldset class="row g-3 mt-3">
+   <div class="col-md-6">
+    <label for="age" class="form-label"> Input your age(years):</label>
+    <input id="age" type="number" name="age" min="5" max="120" class="form-control"></label>
+  </div>
+    <div class="col-md-6">
+    <label for="referrer" class="form-label">How did you hear about us? </label>
+     <select id="referrer" name="referrer" class="form-select">
+       <option value="">(Select one)</option>
+       <option value="1">Social media (Facebook, Instagram, Twitter, LinkedIn, TikTok, etc.)</option>
+       <option value="2">Recommendation from a friend or family member</option>
+       <option value="3">Word of mouth</option>
+       <option value="4">Other</option>
+    </select>
+  </div>
+</fieldset>
+  <button type="submit" class="btn btn-success mt-3 w-100">Submit</button>
+   </form>
+  </div>
+  
+  
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Mostrar el formulario de registro y ocultar login
+  const showRegisterLink = document.getElementById("show-register");
+  const loginForm = document.getElementById("login-form");
+  const registerContainer = document.getElementById("register-container");
+  const loginTitle = document.getElementById("login-title");
+
+  if (showRegisterLink && loginForm && registerContainer) {
+    showRegisterLink.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // Ocultar login y mostrar register usando d-none
+      loginForm.classList.add("d-none");
+      registerContainer.classList.remove("d-none");
+      loginTitle.classList.add("d-none");
+
+      // 🎯 Animación flotante SOLO en pantallas pequeñas
+      if (window.innerWidth <= 768) {
+        showRegisterLink.classList.add("float");
+        registerContainer.classList.add("float");
+      }
+    });
+  }
+
+  // ======================== LOGIN ========================
+ 
+
+  // ======================== REGISTRO ========================
+  const registerForm = document.querySelector(".form-container");
+  if (!registerForm) return;
+
+  const inputs = registerForm.querySelectorAll("input, select");
+  const firstName = document.getElementById("first-name");
+  const lastName = document.getElementById("last-name");
+  const registerEmail = document.getElementById("register-email");
+
+  // Capitalizar nombre y apellido
+  [firstName, lastName].forEach(input => {
+    input.addEventListener("blur", () => {
+      input.value = input.value
+        .toLowerCase()
+        .replace(/\b\w/g, c => c.toUpperCase());
+    });
+  });
+
+  // Formatear teléfono
+  function cleanPhone(phone) {
+    const rePhone = RegExp(phone.pattern);
+    const phoneNum = phone.value;
+    const cleanedPhone = phoneNum.replace(rePhone, "($1) $2-$3");
+    if (rePhone.test(phoneNum)) {
+      return cleanedPhone;
+    } else {
+      alert("INVALID PHONE");
+      return phoneNum;
+    }
+  }
+
+  const phone = document.getElementById('phone');
+  if (phone) {
+    phone.addEventListener('blur', function () {
+      phone.value = cleanPhone(phone);
+    });
+  }
+
+  // Validación en tiempo real
+  inputs.forEach(input => {
+    input.addEventListener("input", () => {
+      validateField(input);
+    });
+  });
+
+  function validateField(input) {
+    const errorMsg = input.nextElementSibling;
+    if (errorMsg && errorMsg.classList.contains("error-message")) {
+      errorMsg.remove();
+    }
+
+    if (!input.checkValidity()) {
+      const span = document.createElement("span");
+      span.className = "error-message";
+      span.textContent = input.validationMessage;
+      input.insertAdjacentElement("afterend", span);
+    }
+  }
+
+  // Validación al enviar formulario de registro
+  registerForm.addEventListener("submit", function (event) {
+    let isValid = true;
+
+    // Limpieza de entradas
+    inputs.forEach(input => {
+      if (input.type === "text" || input.type === "email") {
+        input.value = input.value.trim();
+        if (input.name === "first-name" || input.name === "last-name") {
+          input.value = input.value
+            .toLowerCase()
+            .replace(/^\w/, c => c.toUpperCase());
+        }
+      }
+      if (input.type === "tel") {
+        input.value = cleanPhone(input);
+      }
+    });
+
+    // Validación
+    inputs.forEach(input => {
+      const errorMsg = input.nextElementSibling;
+      if (errorMsg && errorMsg.classList.contains("error-message")) {
+        errorMsg.remove();
+      }
+
+      if (!input.checkValidity()) {
+        validateField(input);
+        isValid = false;
+      }
+    });
+
+    event.preventDefault();
+
+    if (!isValid) {
+      alert("Correct the errors before submitting the form");
+    } else {
+      alert("Form sent!");
+
+      // Volver al login usando d-none
+      loginForm.classList.remove("d-none");
+      registerContainer.classList.add("d-none");
+      loginTitle.classList.remove("d-none");
+
+      // Quitar animación por si regresa
+      showRegisterLink.classList.remove("float");
+      registerContainer.classList.remove("float");
+
+      // Limpiar formulario de registro
+      registerForm.reset();
+    }
+  });
+});
+  </script>
+ {% endblock %}
+
+

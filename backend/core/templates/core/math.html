@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Facts Practice | Menu</title>
+
+  <!-- Bootstrap  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/math-facts.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app"></div>
+<main>
+
+      <!-- ===== NAVIGATION - NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+                     <!-- LOGO -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+    <img src="{% static 'images/logo.png' %}" alt="Play2Learn logo" class="me-2" width="50" height="50">
+        <span>Play2Learn</span>
+      </a>
+
+  <!-- BOTÓN HAMBURGUESA (Para moviles) -->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+      </button>
+
+   <!-- ENLACES -->
+   <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+    <ul class="navbar-nav gap-3 text-center">
+      <li class="nav-item">
+        <a class="nav-link active" href="/">Home</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="gamesDropdown" data-bs-toggle="dropdown">Games</a>
+      <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="/games/anagram/">Anagram Hunts</a></li>
+      <li><a class="dropdown-item" href="/games/math/">Math Facts Practice</a></li>
+    </ul>
+  </li>
+      <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="/login/">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HEADER ===== -->
+  <header class="text-center my-4">
+    <h1>Math Facts Practice</h1>
+  </header>
+
+   <!-- ===== CONTENIDO ===== -->
+  <div class="container my-5">
+   <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+     <div class="center-menu card p-3 shadow-sm text-center mx-auto">
+      <ul class="list-unstyled mb-0">
+      <li class="Operation"><a href="#">Operation <i class="fas fa-chevron-down"></i></a>
+      <ul id="operation-list">
+        <li>
+      <div class="operation-buttons">
+        <button onclick="elegirJuego('addition')" class="btn btn-outline-primary mb-2" aria-label="Select addition game">Addition</button>
+        <button onclick="elegirJuego('subtraction')" class="btn btn-outline-primary mb-2">Subtraction</button>
+        <button onclick="elegirJuego('multiplication')" class="btn btn-outline-primary mb-2">Multiplication</button>
+        <button onclick="elegirJuego('division')" class="btn btn-outline-primary mb-2">Division</button>
+        </div>
+      </li>
+    </ul>
+  </li>
+
+    <!-- Botón GO actualizado -->
+    <a href="#" class="go-link" onclick="startGame()" aria-label="Start game">
+     <span class="inline-1">GO</span>
+    </a>
+  </div>
+    <ol class="list">
+      <li>Select Operation</li>
+      <li>Press <span class="inline-2">GO</span> </li>
+      <li>How many problems can you solve in 30 seconds?</li>
+    </ol>
+   </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-light py-4 mt-5">
+  <div class="container">
+    <!-- Iconos de redes sociales -->
+    <div class="row justify-content-center mb-3">
+      <div class="col-auto d-flex justify-content-center gap-4 fs-4">
+        <a href="/contact/" class="text-dark"><i class="bi bi-envelope"></i></a>
+        <a href="https://instagram.com" class="text-dark" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://twitter.com" class="text-dark" target="_blank"><i class="bi bi-twitter"></i></a> 
+        <a href="https://facebook.com" class="text-dark" target="_blank"><i class="bi bi-facebook"></i></a> 
+      </div>
+    </div>
+    <!-- Copyright -->
+    <div class="row">
+      <div class="col text-center">
+        <p class="copyright mb-0">&copy; 2020 Play2Learn</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</body>
+  
+  <!-- JS -->
+ <script>
+    let jugador = "";
+    let juegoElegido = "";
+
+    function elegirJuego(opcion) {
+      jugador = prompt("What's your name?");
+      
+      if (jugador) {
+        const confirmacion = confirm(`You chose ${opcion}, ${jugador}. Do you want to continue?`);
+        if (confirmacion) {
+          juegoElegido = opcion;
+          alert("Ready! The game will start now.");
+        } else {
+          alert("Selection cancelled.");
+        }
+      } else {
+        alert("Please enter your name.");
+      }
+    }
+
+    function startGame() {
+    if (jugador && juegoElegido) {
+  localStorage.setItem("jugador", jugador);
+  localStorage.setItem("juegoElegido", juegoElegido);
+
+  if (juegoElegido === "addition") {
+    window.location.href = "/games/math/play/addition/";
+  } else if (juegoElegido === "subtraction") {
+    window.location.href = "/games/math/play/subtraction/";
+  } else if (juegoElegido === "multiplication") {
+    window.location.href = "/games/math/play/multiplication/";
+  } else if (juegoElegido === "division") {
+    window.location.href = "/games/math/play/division/";
+  }
+} else {
+  alert("Please choose a game and enter your name first.");
+}
+    }
+  </script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</html>
+  

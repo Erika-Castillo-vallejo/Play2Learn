@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>My Game Scores</h1>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>Game</th>
+                <th>Settings</th>
+                <th>Score</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for score in scores %}
+            <tr>
+                <td>{{ score.game_type }}</td>
+                <td>{{ score.settings }}</td>
+                <td>{{ score.score }}</td>
+                <td>{{ score.time_finished }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No scores yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

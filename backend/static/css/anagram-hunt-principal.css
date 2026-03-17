@@ -1,0 +1,159 @@
+/* ======== GLOBAL ======== */
+body {
+    background-color: rgb(183, 156, 201);
+  }
+
+/* ======== NAVBAR ======== */
+.navbar-nav {
+    align-items: center; /* centra los items verticalmente dentro del contenedor */
+   }
+
+.navbar .nav-link {
+    font-size: 1.2rem; /* tamaño más grande (1rem = 16px aprox.) */
+  }
+
+.navbar .nav-link:hover {
+    background-color: #7cbbe8;
+    color: black !important;   /* cambia el color del texto */
+    border-radius: 50%;
+    transform: scale(1.50);
+  }
+
+.dropdown-menu {
+    background-color: rgb(209, 136, 217) !important;
+  }
+
+/* Estilo de los enlaces dentro del submenú */
+.dropdown-item {
+    color: rgb(0, 0, 0) !important;
+    font-weight: bold;
+    font-size: 1.2rem;  /* mismo tamaño que navbar */
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+ /* Color al pasar el mouse */
+.dropdown-item:hover {
+    background-color: rgb(237, 221, 221) !important;
+    color: rgb(189, 22, 39) !important;
+    transform: scale(1.2);
+  }
+  
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;      
+    margin-bottom: 1rem;
+}
+
+/* ======== CONTENEDOR BLANCO ======== */
+.center-menu {
+    max-width: 300px;       /* no tan ancho horizontalmente */
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 10px;    
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* ======== INPUT ======== */
+#word-length {
+    width: 60%;
+    max-width: 150px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* ======== BOTÓN PLAY ======== */
+.go-link {
+    display: inline-block;  
+    background-color: #a6aaad;
+    color: rgb(11, 11, 11);
+    text-decoration: none;
+    padding: 0.5rem 1rem; /* tamaño acorde a “PLAY” */
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    margin-top: 5rem;
+}
+
+.go-link:hover {
+    background-color: #e4f88a;
+}
+
+/* ======== INSTRUCCIONES ======== */
+.list {
+    margin-top: 1.5rem;
+    padding-left: 0.5rem;
+    list-style-position: inside;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* ======== ESTILOS DE LOS SPAN ======== */
+.inline-1, .inline-2 {
+    background: pink;
+    border: 2px solid black;
+    padding: 0.2rem 0.5rem;
+}
+
+/* ======== RESPONSIVE PARA DESKTOP ======== */
+@media (min-width: 992px) {
+    h2 {
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    /* Alinear WORD LENGTH y contenedor blanco horizontalmente */
+    .row.justify-content-center.align-items-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .center-menu {
+        margin: 0;
+    }
+}
+
+/* ======== FOOTER ======== */
+i {
+    color: rgb(0, 0, 0);
+    padding: 2rem;
+    font-size: 2.3rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+footer .text-dark {
+  -webkit-text-stroke: 0.7px black;
+}
+
+.container i:hover {
+    color: #0073e6;
+    transform: scale(1.5); 
+}
+
+.copyright {
+    text-align: left;
+    padding: 1rem;
+    background-color: #f1f1f1;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Borde blanco SOLO en pantallas pequeñas */
+@media (max-width: 768px) {
+  body {
+    border-left: 30px solid #f8f9fa;
+    border-right: 30px solid #f8f9fa;
+  }
+}

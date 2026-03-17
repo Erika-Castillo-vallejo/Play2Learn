@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time's Up!</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgb(183, 156, 201);
+      font-family: Arial, sans-serif;
+      padding-top: 60px;
+    } 
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 180px; /* espacio debajo del título */
+      font-weight: bold;
+     
+    }
+
+    h2 {
+      color: rgb(247, 215, 9);
+      text-shadow: 
+      -1px -1px 0 black, /* Primer borde: negro */
+      1px -1px 0 black, 
+      -1px  1px 0 black, 
+      1px  1px 0 black,
+      3px 3px 0 white; /* Segundo borde: blanco */ 
+      margin-top: -130px;
+    }
+
+    p {
+      font-size: 2rem;
+      margin-bottom: 180px; /* espacio debajo del título */
+      font-weight: bold;
+    }
+    
+    #score {
+      font-size: 8rem !important;
+      margin-bottom: 180px; /* espacio debajo del título */
+      font-weight: bold;
+      margin-top: -160px;
+    }
+
+    .btn-custom {
+      padding: 10px 20px;
+      background-color: #070707;
+      color: white;
+      font-weight: bold;
+      margin-top: -120px;
+    }
+
+   .btn-custom:hover {
+      background-color: rgb(86, 206, 225);;
+      color: #070707;
+    }
+
+/* Borde blanco SOLO en pantallas pequeñas */
+    @media (max-width: 768px) {
+     body {
+      border-left: 30px solid #f8f9fa;
+      border-right: 30px solid #f8f9fa;
+      border-top: 30px solid #f8f9fa;
+      border-bottom: 30px solid #f8f9fa;
+     }
+    }
+  </style>
+</head>
+  <body class="d-flex flex-column min-vh-100">
+    <div id="app">
+    <!-- ===== HEADER ===== -->
+  <header class="text-center my-3">
+    <h1>Math Facts</h1>
+  </header>
+
+  <!-- Contenedor principal -->
+  <main class="container d-flex flex-column justify-content-center align-items-center flex-grow-1 text-center">
+  <h2 class="display-4 mb-5">⌛ Time's Up!</h2>
+  <p>Your final score is:</p>
+  <div id="score" class="display-1 fw-bold mb-6"> <span></span></div>
+  <button class="btn btn-custom btn-lg" 
+    onclick="window.location.href='/games/math/'"> Play Again</button>
+  </main>
+
+  <script>
+  const score = localStorage.getItem("finalScore") || 0;
+  document.querySelector("#score span").textContent = score;
+
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+      const cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + "=")) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  fetch("/games/save-score/", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": getCookie("csrftoken"),
+    },
+    body: JSON.stringify({
+      game_type: "math",
+      settings: "Math Facts Practice",
+      score: parseInt(score)
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log("Score saved:", data);
+  })
+  .catch(error => {
+    console.error("Error saving score:", error);
+  });
+</script>
+    <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,568 @@
+/* ======== GLOBAL ======== */
+body {
+    background-color: rgb(183, 156, 201); 
+  }
+   
+h1 {
+    text-align: center;
+  }
+
+/* ======== NAVBAR ======== */
+.navbar-nav {
+    align-items: center; /* centra los items verticalmente dentro del contenedor */
+  }
+
+.navbar .nav-link {
+    font-size: 1.2rem; /* tamaño más grande (1rem = 16px aprox.) */
+  }
+
+.navbar .nav-link:hover {
+    background-color: #7cbbe8;
+    color: black !important;   /* cambia el color del texto */
+    border-radius: 50%;
+    transform: scale(1.50);
+  }
+
+.dropdown-menu {
+    background-color: rgb(209, 136, 217) !important;
+  }
+
+/* Estilo de los enlaces dentro del submenú */
+.dropdown-item {
+    color: rgb(0, 0, 0) !important;
+    font-weight: bold;
+    font-size: 1.2rem;  /* mismo tamaño que navbar */
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+ /* Color al pasar el mouse */
+.dropdown-item:hover {
+    background-color: rgb(237, 221, 221) !important;
+    color: rgb(189, 22, 39) !important;
+    transform: scale(1.2);
+  }
+
+main {
+    max-width: 680px !important;
+    margin: 0 auto !important;
+    background: rgb(184,200,239) !important;
+    border: 1px solid rgb(9, 9, 9) !important;
+  }
+
+section {
+    margin: 100px;
+    width: 75%;
+    height: 400px;
+    font-size: 20px;/*letra mas grande*/
+  }
+
+section p:first-of-type::first-line {
+    font-style: italic;
+  }
+
+section p:first-of-type::first-letter {
+    font-size: xx-large;
+  }
+/* ======== ANIMACION LETRAS ======== */
+
+/* Letra - R */
+.letter-base-R {
+    position: absolute;
+    width: 57px;
+    height: 57px;
+    left: 0.5%;
+    margin-left: 36px;
+    opacity: 0.4;
+  }
+
+.R-gris {
+    top: 125px;
+  }
+
+.Letter-R {
+    top: 620px;
+  }
+
+.Letra-R {
+    width: 44px;
+    height: 44px;
+    left: 1%;
+    top:127px;
+    margin-left: 36px;
+    animation: move-R-E 19s ease-in-out infinite; 
+  }
+  
+/* Letra - e */
+.letter-base-e {
+    position: absolute;
+    width: 235px;
+    height: 235px;
+    left: -0.5%;
+    top: -61px;
+    opacity: 0.3;
+    margin-left: 30px;
+  }
+
+.Letter-E {
+    top: 432px;
+  }
+
+.Letra-E {
+    animation: move-R-E 19s ease-in-out infinite; 
+  }
+
+@keyframes move-R-E  {
+  0%, 15% { transform: translateY(0px); opacity: 1; }
+  30% { transform: translateY(495px); opacity: 1; }
+  40%, 60% { transform: translateY(495px); opacity: 1; }
+  80%, 100% { transform: translateY(0px); opacity: 1; }
+}
+
+/* Letra - a */
+.letter-base-a {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: 7.5%;  
+    opacity: 1;
+    margin-left: 15px;
+  }
+
+.A-gris {
+    top: 128px;
+  }
+
+.Letter-A {
+    top: 620px;
+  }
+
+.A-gray {
+    top: 366px;
+  }
+
+.Letra-A {
+    top: 128px;
+    animation: move-A-C-T 12s ease-in-out infinite;
+  }
+
+/* Letra - c */
+.letter-base-c {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 12%;  
+    opacity: 1;
+    margin-left: -6px;
+  }
+
+.C-gris {
+    top: 132px;
+  }
+
+.Letter-C {
+    top: 625px;
+  }
+
+.C-gray {
+    top: 371px;
+  }
+
+.Letra-C {
+    top: 132px;
+    animation: move-A-C-T 12s ease-in-out infinite; 
+  }
+
+/* Letra - t */
+.letter-base-t{
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    left: 16%;  
+    opacity: 1;
+    margin-left: -25px;
+  }
+
+.T-gris {
+    top: 121px;
+  }
+
+.Letter-T {
+    top: 613px
+  }
+
+.T-gray {
+    top: 360px;
+  }
+
+.Letra-T {
+    top: 121px;
+    animation: move-A-C-T 12s ease-in-out infinite;
+    z-index: 10;
+  }
+
+@keyframes move-A-C-T {
+  0%, 15% { transform: translateY(0px); opacity: 1; }
+  25%, 35% { transform: translateY(239px); opacity: 1; } /* Se detienen sobre las grises */
+  40%, 60% { transform: translateY(493px); opacity: 1; } /* Pausa */
+  80%, 100% { transform: translateY(0px); opacity: 1; } /* Siguen bajando */
+}
+/* Letra - o */
+.letter-base-o {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    left: 19%;  
+    opacity: 1;
+    margin-left: -27px;
+  }
+
+.O-gris {
+    top: 121px;
+  }
+
+.Letra-O {
+    top: 121px;
+    animation: move-O-R 12s ease-in-out infinite;
+  }
+
+/* Letra - r */
+.letter-base-r {
+    position: absolute;
+    width: 43px;
+    height: 43px;
+    left: 23%; 
+    opacity: 1;
+    margin-left: -37px;
+  }
+
+.r-gris {
+    top: 129px;
+  }
+
+.Letra-r {
+    top: 129px;
+    animation: move-O-R 12s ease-in-out infinite;
+  }
+
+@keyframes move-O-R {
+  0%, 15% { transform: translateY(0px); opacity: 1; }
+  35%, 55% { transform: translateY(239px); opacity: 1; }
+  80%, 100% { transform: translateY(420px); opacity: 1; } /* Siguen bajando hasta salir */
+}
+
+/* ======== ANIMACIÓN SIGNOS MATEMÁTICOS ======== */
+/* (+) Suma */
+.suma {
+    position: absolute;
+    top: 10%; 
+    left: 85%;
+    width: 75px;
+    height: 75px;
+    display: inline-block;
+    animation: spin 6s linear infinite; /* Giro más lento */
+    transform-origin: 50% 50%; /* Giro alrededor del centro */
+  }
+
+/* (-) Resta */
+.resta {
+    position: absolute;
+    top: 30%; /* Subido un poco */
+    left: 85%;
+    width: 80px;
+    height: 85px;
+    display: inline-block;
+    animation: spin 6s linear infinite; /* Giro más lento */
+    transform-origin: 50% 50%; /* Giro centrado */
+  }
+
+/* (*) Multiplicación */
+.multiplicacion {
+    position: absolute;
+    top: 45%; /* Subido un poco */
+    left: 85%;
+    width: 76px;
+    height: 76px;
+    display: inline-block;
+    animation: spin 6s linear infinite; /* Giro más lento */
+    transform-origin: 50% 50%;
+  }
+
+/* (/) División */
+.division {
+    position: absolute;
+    top: 65%; /* Subido un poco */
+    left: 85%;
+    width: 82px;
+    height: 70px;
+    display: inline-block;
+    animation: spin 6s linear infinite; /* Giro más lento */
+    transform-origin: 50% 50%;
+  }
+
+/* Animación única para todos los signos */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+
+ /* Íconos matemáticos más pequeños y más espaciados */
+.suma, .resta, .multiplicacion, .division {
+    width: 35px !important;
+    height: auto !important;
+    left: 80% !important;
+  }
+
+.suma { top: 20% !important; }
+.resta { top: 40% !important; }
+.multiplicacion { top: 60% !important; }
+.division { top: 80% !important; }
+
+@media (max-width: 768px) {
+  /* Contenedor de letras y signos */
+  .letters-container {
+    width: 100%;
+    height: auto; 
+    position: relative; /* mantener relative para los absolute hijos */
+  }
+
+/* ======== DISEÑO DE LETRAS EN PANTALLAS PEQUEÑAS ======== */
+  /* Letras grises y animadas */
+@media (max-width: 768px) {
+
+  /* OCULTAR SOLO LAS LETRAS GRISES */
+  .R-gris, .Letter-R, 
+  .E-gris, .Letter-E, 
+  .A-gris, .Letter-A, .A-gray,
+  .C-gris, .Letter-C, .C-gray, .O-gris,
+  .T-gris, .Letter-T, .T-gray, .r-gris {
+    display: none !important;
+  }
+
+}
+.letters-container img {
+    position: absolute;
+    transform: scale(0.5);  /* reducir tamaño de todas las letras */
+    opacity: 0.8;           /* opcional: menos opacas para claridad */
+  }
+
+
+/* Pantallas pequeñas R-E-A-C-T-O-R C-O-L-O-R */
+.Letra-R { top: -36px !important; width: 28px !important; left: 14.4% !important; height: auto !important;}
+.Letra-E { top: -139px !important; width: 128px !important; left: 14.3% !important; height: auto !important;}
+.Letra-A { top: -35px !important; width: 30px !important; left: 32% !important; height: auto !important;}
+.Letra-C { top: -33px !important; width: 25px !important; left: 46% !important; height: auto !important;}
+.Letra-T { top: -39px !important; width: 35px !important; left: 58% !important; height: auto !important;}
+.Letra-O { top: -39px !important; width: 35px !important; left: 66% !important; height: auto !important;}
+.Letra-r { top: -34px !important; width: 27px !important; left: 77.5% !important; height: auto !important;}
+  
+
+/* === Animación móvil para R y E — igual que O-r === */
+.Letra-R {
+  animation: move-R-E-small 12s ease-in-out infinite !important;
+}
+
+.Letra-E {
+  animation: move-R-E-small 12s ease-in-out infinite !important;
+}
+
+  /* Letra E */
+@keyframes move-R-E-small {
+  0%   { transform: translateY(0); opacity: 1; }
+  50%  { transform: translateY(130px); opacity: 1; } /* posición final, AJUSTABLE */
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+  /* A-C-T */
+@keyframes move-A-C-T {
+  0%, 10% { transform: translateY(0); opacity: 1; }
+  25%, 55% { transform: translateY(60px); opacity: 1; } /* bajan menos */
+  75%, 85% { transform: translateY(128px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; } /* no bajan tanto */
+}
+
+  /* O-r */
+@keyframes move-O-R {
+  0%, 15% { transform: translateY(0); opacity: 1; }
+  35%, 55% { transform: translateY(60px); opacity: 1; }
+  75%, 85% { transform: translateY(130px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+ }
+}
+
+/* Opcional: hacer que las filas no se amontonen */
+.letters-animate, .letter-static-block {
+    margin-bottom: 2rem; 
+  }
+
+/* ======== DISEÑO DE SIGNOS MATEMÁTICOS EN PANTALLAS PEQUEÑAS ======== */
+@media (max-width: 767.98px) {
+
+/* Contenedor de signos */
+.math-signs {
+    position: relative;
+    bottom: -28.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    display: flex;
+    flex-direction: row;     /* ✅ HORIZONTAL */
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+
+/* Mantenerlos en fila aunque sea .row */
+.math-signs.row {
+    flex-direction: row !important;
+  }
+
+/* Anular absolute SOLO en móvil */
+.suma,
+.resta,
+.multiplicacion,
+.division {
+    position: static !important;
+    width: 26px;
+    opacity: 0.85;
+  }
+
+/* Limpieza de columnas Bootstrap */
+.math-signs .col-auto {
+    padding: 0;
+    width: auto;
+  }
+}
+
+/* Texto principal más legible */
+#Game-1 p {
+    font-size: 1rem !important;
+    text-align: center;
+  }
+
+.highlight {
+    color: rgb(156, 188, 14); /* Color amarillo */
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(15, 13, 13, 0.3);
+    text-shadow: 
+    -1px -1px 0 black, /* Primer borde: negro */
+    1px -1px 0 black, 
+    -1px  1px 0 black, 
+    1px  1px 0 black;
+  }
+
+h2 {
+    color: rgb(247, 215, 9);
+    text-shadow: 
+    -1px -1px 0 black, /* Primer borde: negro */
+    1px -1px 0 black, 
+    -1px  1px 0 black, 
+    1px  1px 0 black,
+    3px 3px 0 white; /* Segundo borde: blanco */
+
+    font-size: 2rem; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    text-align: center; /* Centra el texto */
+  }
+
+p {
+    font-size: 6rem;
+  }
+
+#Game-1 {
+    margin-top: -5rem;  
+  }
+
+#Game-1 p {
+    font-size: 5rem;
+    line-height: 2;
+  }
+
+/* ======== FOOTER ======== */
+i {
+    color: rgb(0, 0, 0);
+    padding: 2rem;
+    font-size: 2.3rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+footer .text-dark {
+  -webkit-text-stroke: 0.7px black;
+}
+
+.container i:hover {
+    color: #0073e6;  /* Cambiar color al pasar el mouse */
+    transform: scale(1.5); 
+  }
+
+.copyright {
+    text-align: left;
+    padding: 1rem;
+    background-color: #f1f1f1;
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+/* ---------- Responsive: asegurar que el <p> se vea completo y centrado en pantallas pequeñas ---------- */
+@media (max-width: 767.98px) {
+
+/* Asegura que el main y la sección ocupen todo el ancho y tengan padding */
+main, #Game-1 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 1rem 0 !important;
+    padding: 1rem !important;
+    box-sizing: border-box; /* incluye padding en el ancho total */
+  }
+
+/* Centrar y ajustar el párrafo */
+#Game-1 p {
+    text-align: center;          /* centrado del texto */
+    font-size: 1rem;             /* tamaño legible en móvil */
+    line-height: 1.5;            /* mejor lectura */
+    margin: 0 auto;              /* centrar si tuviera ancho fijado */
+    padding: 0 0.5rem;           /* espacio lateral para no pegarse al borde */
+    word-break: break-word;      /* evitar desbordes por palabras largas */
+    hyphens: auto;               /* permitir guionado (si el navegador lo soporta) */
+  }
+ }
+
+/* Borde blanco SOLO en pantallas pequeñas */
+@media (max-width: 768px) {
+body {
+    border-left: 30px solid #f8f9fa;
+    border-right: 30px solid #f8f9fa;
+  }
+
+main {
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
+  }
+
+section {
+    height: auto !important;    /* Evitar espacio vacío */ 
+    margin: 20px auto; 
+  }
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

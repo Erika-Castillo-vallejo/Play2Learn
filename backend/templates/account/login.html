@@ -1,0 +1,62 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<header class="text-center my-4 container">
+  <h1 id="login-title">Log in</h1>
+</header>
+
+<div class="container d-flex justify-content-center">
+  <form class="login-form w-100" style="max-width: 500px;"
+        method="POST" action="{% url 'account_login' %}" autocomplete="off">
+    {% csrf_token %}
+
+    {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+    {% endif %}
+
+    {% if form.errors %}
+      <div class="alert alert-danger text-center">
+        Email or password is incorrect.
+      </div>
+    {% endif %}
+
+    <div class="mb-3">
+      <label for="id_login" class="form-label">Email:</label>
+      <input id="id_login"
+             name="login"
+             class="form-control"
+             type="email"
+             placeholder="Enter your email"
+             value="{{ form.login.value|default_if_none:'' }}"
+             required>
+    </div>
+
+    <div class="mb-3">
+      <label for="id_password" class="form-label">Password:</label>
+      <input id="id_password"
+             name="password"
+             class="form-control"
+             type="password"
+             placeholder="Enter your password"
+             required>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary w-100">Login</button>
+
+    <p class="text-center mt-3 register-link">
+      Don't have an account?
+      <a href="{% url 'account_signup' %}">Register</a>
+    </p>
+
+    <p class="text-center mt-2">
+      <a href="{% url 'account_reset_password' %}">Forgot your password?</a>
+    </p>
+  </form>
+</div>
+{% endblock %}

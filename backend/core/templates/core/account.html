@@ -1,0 +1,57 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 700px;">
+    <h1 class="mb-4">My Account</h1>
+
+    {% if success %}
+    <div class="alert alert-success">
+        Your account information was updated successfully.
+    </div>
+    {% endif %}
+
+    <form method="POST" class="login-form">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" name="first_name" class="form-control" value="{{ form.first_name.value|default:'' }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" name="last_name" class="form-control" value="{{ form.last_name.value|default:'' }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" value="{{ form.email.value|default:'' }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input type="text" name="phone" class="form-control" value="{{ form.phone.value|default:'' }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Account Type</label>
+            <select name="account_type" class="form-select">
+                <option value="personal" {% if form.account_type.value == "personal" %}selected{% endif %}>Personal account</option>
+                <option value="business" {% if form.account_type.value == "business" %}selected{% endif %}>Business account</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Age</label>
+            <input type="number" name="age" class="form-control" value="{{ form.age.value|default:'' }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Referrer</label>
+            <input type="text" name="referrer" class="form-control" value="{{ form.referrer.value|default:'' }}">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

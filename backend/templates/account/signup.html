@@ -1,0 +1,147 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="register-container" class="container mt-4" style="max-width:700px;">
+  <h1>Register</h1>
+  <p class="register-text">
+    Please fill out this <strong>Registration form</strong> with the required information
+  </p>
+
+  {% if form.errors %}
+    <div class="alert alert-danger mt-3">
+      Please correct the errors below.
+    </div>
+  {% endif %}
+
+  <form class="form-container" method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+
+    {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+    {% endif %}
+
+    <!-- hidden fields required by allauth -->
+    <input type="hidden" id="hidden-username" name="username">
+    <input type="hidden" id="hidden-password2" name="password2">
+
+    <div class="row g-3">
+      <div class="col-md-12">
+        <label for="first-name" class="form-label">Enter Your First Name:</label>
+        <input id="first-name" class="form-control" name="first_name" type="text" minlength="3" required>
+        {% for error in form.first_name.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <div class="col-md-12">
+        <label for="last-name" class="form-label">Enter Your Last Name:</label>
+        <input id="last-name" class="form-control" name="last_name" type="text" minlength="3" required>
+        {% for error in form.last_name.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row g-3 mt-1">
+      <div class="col-md-12">
+        <label for="phone" class="form-label">Telephone:</label>
+        <input id="phone" class="form-control" name="phone" type="tel" placeholder="(555) 555-5555">
+        {% for error in form.phone.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <div class="col-md-12">
+        <label for="register-email" class="form-label">Enter Your Email:</label>
+        <input id="register-email" class="form-control" name="email" type="email" placeholder="@gmail.com" required>
+        {% for error in form.email.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="col-12 mt-3">
+      <label for="new-password" class="form-label">Create a New Password</label>
+      <input id="new-password" class="form-control" name="password1" type="password" pattern=".{8,}" required>
+      {% for error in form.password1.errors %}
+        <div class="text-danger small">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <fieldset class="row g-3 mt-3">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" id="personal-account" type="radio" name="account_type" value="personal" required>
+        <label class="form-check-label" for="personal-account">Personal account</label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="account_type" id="business-account" value="business">
+        <label class="form-check-label" for="business-account">Business account</label>
+      </div>
+
+      {% for error in form.account_type.errors %}
+        <div class="text-danger small">{{ error }}</div>
+      {% endfor %}
+
+      <div class="form-check mt-2">
+        <input class="form-check-input" type="checkbox" id="terms-and-conditions" required>
+        <label class="form-check-label" for="terms-and-conditions">
+          I accept the <a href="#">Terms and Conditions</a>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="row g-3 mt-3">
+      <div class="col-md-6">
+        <label for="age" class="form-label">Input your age (years):</label>
+        <input id="age" type="number" name="age" min="5" max="120" class="form-control">
+        {% for error in form.age.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <div class="col-md-6">
+        <label for="referrer" class="form-label">How did you hear about us?</label>
+        <select id="referrer" name="referrer" class="form-select">
+          <option value="">(Select one)</option>
+          <option value="Social media">Social media (Facebook, Instagram, Twitter, LinkedIn, TikTok, etc.)</option>
+          <option value="Recommendation from a friend or family member">Recommendation from a friend or family member</option>
+          <option value="Word of mouth">Word of mouth</option>
+          <option value="Other">Other</option>
+        </select>
+        {% for error in form.referrer.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+    </fieldset>
+
+    <button type="submit" class="btn btn-success mt-3 w-100">Submit</button>
+  </form>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const emailInput = document.getElementById("register-email");
+  const password1Input = document.getElementById("new-password");
+  const hiddenUsername = document.getElementById("hidden-username");
+  const hiddenPassword2 = document.getElementById("hidden-password2");
+
+  function syncHiddenFields() {
+    hiddenUsername.value = emailInput.value.trim();
+    hiddenPassword2.value = password1Input.value;
+  }
+
+  emailInput.addEventListener("input", syncHiddenFields);
+  password1Input.addEventListener("input", syncHiddenFields);
+
+  document.querySelector(".form-container").addEventListener("submit", () => {
+    syncHiddenFields();
+  });
+});
+</script>
+{% endblock %}

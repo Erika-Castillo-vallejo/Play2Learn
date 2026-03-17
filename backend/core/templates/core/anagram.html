@@ -1,0 +1,101 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/anagram-hunt-principal.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div id="app">
+
+<!-- ===== HEADER ===== -->
+  <header class="text-center my-4">
+    <h1>Anagram Hunts</h1>
+  </header>
+
+   <!-- ===== CONTENIDO ===== -->
+<div class="container my-5">
+  <div class="row justify-content-center align-items-center">
+   <div class="col-12 col-lg-4 text-center text-lg-start mb-3 mb-lg-0">
+      <h2>WORD LENGTH</h2>
+    </div>
+  <div class="col-12 col-lg-4">
+    <div class="center-menu card p-3 shadow-sm text-center mx-auto">
+          <input type="number" class="form-control w-50 mx-auto" placeholder="Enter number of letters" min="4" max="6" id="word-length" v-model.number="wordLength">
+        </div>
+      </div>
+
+        <!-- Botón PLAY -->
+    <div class="col-12 text-center mt-3">
+      <a href="#" class="go-link" @click.prevent="startAnagramGame">
+        <span class="inline-1">PLAY</span>
+      </a>
+    </div>
+
+      <!-- Instrucciones -->
+    <div class="col-12 mt-3">
+      <ol class="list text-center">
+        <li>Choose Word Length</li>
+        <li>Press <span class="inline-2">PLAY</span></li>
+        <li>How many anagrams can you find in a minute?</li>
+      </ol>
+    </div>
+   </div>
+ </div>
+
+</div>
+ 
+<!-- Vue -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  
+  <!-- JS -->
+<script>
+const { createApp } = Vue;
+
+createApp({
+  data() {
+    return {
+      jugador: "",
+      wordLength: 5
+    };
+  },
+
+  methods : {
+    startAnagramGame() {
+   // Pedir nombre solo si no se ha ingresado
+  if (!this.jugador) {
+    this.jugador = prompt("What's your name?");
+    if (!this.jugador) {
+      alert("Please enter your name.");
+      return;
+    }
+  }
+  // Validar longitud
+  if (isNaN(this.wordLength) || this.wordLength < 4 || this.wordLength > 6) {
+    alert("Please enter a word length between 4 and 7.");
+    return;
+      }
+  // Confirmación
+  const confirmacion = confirm(
+    `You chose ${this.wordLength}-letter words, ${this.jugador}. Continue to the game?`
+  );
+
+  if (!confirmacion) {
+    alert("Selection cancelled.");
+    return;
+  }
+
+    // Guardar en localStorage y navegar
+  localStorage.setItem("jugador", this.jugador);
+  localStorage.setItem("juegoElegido", "anagram-hunt");
+  localStorage.setItem("wordLength", this.wordLength);
+  
+  alert("Ready! The game will start now.");
+  window.location.href = "/games/anagram/play/";
+   }
+  }
+}).mount("#app");
+</script>
+
+{% endblock %}
