@@ -1,6 +1,8 @@
 asgiref==3.11.1
+brotli==1.2.0
 Django==6.0.3
 django-allauth==65.15.0
 gunicorn==25.1.0
 packaging==26.0
 sqlparse==0.5.5
+whitenoise==6.12.0
