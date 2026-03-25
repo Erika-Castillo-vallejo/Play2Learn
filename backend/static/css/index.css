@@ -1,6 +1,15 @@
 /* ======== GLOBAL ======== */
+* {
+    box-sizing: border-box;
+  }
+
+html, body {
+    overflow-x: hidden;
+  }
+
 body {
-    background-color: rgb(183, 156, 201); 
+    background-color: rgb(183, 156, 201);
+    margin: 0;
   }
       
 /* ======== NAVBAR ======== */
@@ -213,13 +222,41 @@ footer .text-dark {
   }
 }
 
-/* ===== ANIMACIÓN FLOAT PARA PANTALLAS PEQUEÑAS ===== */
-@media (max-width: 768px) {
+/* pantallas moviles */
+@media (max-width: 767.98px) {
+  body {
+    border-left: 30px solid #f8f9fa;
+    border-right: 30px solid #f8f9fa;
+  }
+
+   p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+   h1 {
+    font-size: 2rem;
+    margin-top: 40px;
+  }
+   
+   h2 {
+    font-size: 1.5rem;
+    margin-top: -30px;
+  }
+
+   h3 {
+    font-size: 1.3rem;
+  }
+
+  .circle {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
 
   .floating-img {
     position: relative;
-    transform: translateY(150px);  /* empieza más abajo */
-    opacity: 0;
+    transform: translateY(80px);  /* empieza más abajo */
+    opacity: 1;
     transition: transform 1s ease-out, opacity 1s ease-out;
   }
 
@@ -227,6 +264,114 @@ footer .text-dark {
     transform: translateY(0);  /* sube a su posición */
     opacity: 1;                /* aparece */
   }
+
+  .btn {
+    width: 80%;
+    max-width: 250px;
+    font-size: 0.95rem;
+  }
+
+  .btn:hover {
+    transform: scale(1.05);
+  }
+
+  .navbar .nav-link:hover {
+    transform: none;
+  }
+
+  .dropdown-item:hover {
+    transform: none;
+  }
+
+  footer .col-auto.d-flex {
+    flex-wrap: wrap;
+    gap: 0.8rem !important;
+  }
+
+  i {
+    padding: 0.5rem;
+    font-size: 1.7rem;
+  }
+
+  .container i:hover {
+    transform: scale(1.1);
+  }
+
+  .copyright {
+    text-align: center;
+    padding: 0.8rem;
+  }
+
+  #cita-container {
+    height: auto;
+    min-height: 220px;
+    margin: 20px auto 30px;
+    padding: 0 10px;
+  }
+
+  .cita-1, .cita-2, .cita-3 {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 14px;
+    font-size: 1rem !important;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .highlight {
+    font-size: 1rem;
+  }
+
+   #Game-1 p, #Game-2 p {
+    font-size: 1rem !important;
+    line-height: 1.3!important;
+  }
 }
 
 
+    /* Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  p {
+    font-size: 1.1rem !important;
+  }
+
+  h1 {
+    font-size: 2.5rem !important;
+    margin-top: 50px !important;
+  }
+
+  h2 {
+    font-size: 1.9rem !important;
+  }
+
+  h3 {
+    font-size: 1.7rem !important;
+  }
+
+  #Game-1, #Game-2 {
+    margin-top: -45px !important;
+  } 
+
+  #Game-1 p, #Game-2 p {
+    font-size: 1.05rem !important;
+    line-height: 1.2!important;
+  }
+
+  #cita-container {
+     margin-bottom: 20px !important;
+  }
+
+  .cita-1,
+  .cita-2,
+  .cita-3 {
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+    padding: 16px !important;
+  }
+}

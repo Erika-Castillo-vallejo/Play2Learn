@@ -1,4 +1,11 @@
 /* ======== GLOBAL ======== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+} 
 body {
     background-color: rgb(183, 156, 201); 
   }
