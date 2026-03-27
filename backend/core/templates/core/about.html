@@ -6,61 +6,73 @@
 {% endblock %}
 
 {% block content %}
-<!-- ===== CONTENIDO ===== -->
-<main class="container my-5">
-  <div class="letters-wrapper">
-  <div class="letters-container mobile-only-letters">
- <!-- Letras grises  R-E-A-C-T-O-R -->
-    <div class="row justify-content-center g-3 mb-4 letter-static-block">
-      <div class="col-auto"><img src="{% static 'images/R black & white 2.png' %}" alt="R-gris" class="img-fluid letter-base-R R-gris"></div>
-      <div class="col-auto"><img src="{% static 'images/e black & white.png' %}" alt="E-gris" class="img-fluid letter-base-e E-gris"></div>
-      <div class="col-auto"><img src="{% static 'images/letra-a gris.png' %}" alt="A-gris" class="img-fluid letter-base-a A-gris"></div>
-      <div class="col-auto"><img src="{% static 'images/Letra-C gris.png' %}" alt="C-gris" class="img-fluid letter-base-c C-gris"></div>
-      <div class="col-auto"><img src="{% static 'images/Letra-T gris.png' %}" alt="T-gris" class="img-fluid letter-base-t T-gris"></div>
-      <div class="col-auto"><img src="{% static 'images/o black & white.png' %}" alt="O-gris" class="img-fluid letter-base-o O-gris"></div>
-      <div class="col-auto"><img src="{% static 'images/r black & white 2 copy.png' %}" alt="r-gris" class="img-fluid letter-base-r r-gris"></div>
-    </div>
- <!-- Letras grises  R-E-A-C-T -->
-    <div class="row justify-content-center g-3 mb-4">
-      <div class="col-auto"><img src="{% static 'images/R black & white 2.png' %}" alt="Letter-R" class="img-fluid letter-base-R Letter-R"></div>
-      <div class="col-auto"><img src="{% static 'images/e black & white.png' %}"  alt="Letter-E" class="img-fluid letter-base-e Letter-E"></div>
-      <div class="col-auto"><img src="{% static 'images/letra-a gris.png' %}" alt="Letter-A" class="img-fluid letter-base-a Letter-A"></div>
-      <div class="col-auto"><img src="{% static 'images/Letra-C gris.png' %}" alt="Letter-C" class="img-fluid letter-base-c Letter-C"></div>
-      <div class="col-auto"><img src="{% static 'images/Letra-T gris.png' %}" alt="Letter-T" class="img-fluid letter-base-t Letter-T"></div>
-    </div>
- <!-- Letras grises  A-C-T -->
-    <div class="row justify-content-center g-3 mb-4">
-      <div class="col-auto"><img src="{% static 'images/letra-a gris.png' %}" alt="Letra-A-gris" class="img-fluid letter-base-a A-gray"></div>
-      <div class="col-auto"><img src="{% static 'images/Letra-C gris.png' %}"  alt="Letra-C-gris" class="img-fluid letter-base-c C-gray"></div>
-      <div class="col-auto"><img src="{% static 'images/Letra-T gris.png' %}" alt="Letra-T-gris" class="img-fluid letter-base-t T-gray"></div>
-    </div>
 
-  <!-- Letras animadas -->
-    <div class="row justify-content-center g-3 mb-4 letters-animate">
-      <div class="col-auto"><img src="{% static 'images/R.png' %}" alt="R" class="img-fluid letter-base-R Letra-R"></div>
-      <div class="col-auto"><img src="{% static 'images/Gráfico e.png' %}" alt="E" class="img-fluid letter-base-e Letra-E"></div>
-      <div class="col-auto"><img src="{% static 'images/letra a...png' %}" alt="A" class="img-fluid letter-base-a Letra-A"></div>
-      <div class="col-auto"><img src="{% static 'images/LETRA C.png' %}" alt="C" class="img-fluid letter-base-c Letra-C"></div>
-      <div class="col-auto"><img src="{% static 'images/LETRA T..png' %}" alt="T" class="img-fluid letter-base-t Letra-T"></div>
-      <div class="col-auto"><img src="{% static 'images/LETRA O.png' %}" alt="O" class="img-fluid letter-base-o Letra-O"></div>
-      <div class="col-auto"><img src="{% static 'images/Letra-r..png' %}" alt="r" class="img-fluid letter-base-r Letra-r"></div>
+<main class="container my-5">
+
+  <!-- ===== Letras grises (originales) ===== -->
+  <div class="letters-wrapper">
+    <div class="letters-container mobile-only-letters">
+      <div class="row justify-content-center g-3 mb-4 letter-static-block">
+        <div class="col-auto"><img src="{% static 'images/R black & white 2.png' %}" class="img-fluid letter-base-R R-gris"></div>
+        <div class="col-auto"><img src="{% static 'images/e black & white.png' %}" class="img-fluid letter-base-e E-gris"></div>
+        <div class="col-auto"><img src="{% static 'images/letra-a gris.png' %}" class="img-fluid letter-base-a A-gris"></div>
+        <div class="col-auto"><img src="{% static 'images/Letra-C gris.png' %}" class="img-fluid letter-base-c C-gris"></div>
+        <div class="col-auto"><img src="{% static 'images/Letra-T gris.png' %}" class="img-fluid letter-base-t T-gris"></div>
+        <div class="col-auto"><img src="{% static 'images/o black & white.png' %}" class="img-fluid letter-base-o O-gris"></div>
+        <div class="col-auto"><img src="{% static 'images/r black & white 2 copy.png' %}" class="img-fluid letter-base-r r-gris"></div>
+      </div>
     </div>
   </div>
 
-  <!-- Signos de operaciones -->
-    <div class="row justify-content-center g-3 mb-5 math-signs">
-      <div class="col-auto"><img src="{% static 'images/Suma.png' %}" alt="suma" class="img-fluid suma"></div>
-      <div class="col-auto"><img src="{% static 'images/Resta.png' %}" alt="resta" class="img-fluid division"></div>
-      <div class="col-auto"><img src="{% static 'images/Multiplicacion.png' %}" alt="multiplicacion" class="img-fluid multiplicacion"></div>
-      <div class="col-auto"><img src="{% static 'images/Division.png' %}" alt="division" class="img-fluid resta"></div>
-    </div>
-  
+  <!-- ===== Letras grises adicionales ===== -->
+  <div class="row justify-content-center g-3 mb-4">
+    <div class="col-auto"><img src="{% static 'images/R black & white 2.png' %}" class="img-fluid letter-base-R Letter-R"></div>
+    <div class="col-auto"><img src="{% static 'images/e black & white.png' %}" class="img-fluid letter-base-e Letter-E"></div>
+    <div class="col-auto"><img src="{% static 'images/letra-a gris.png' %}" class="img-fluid letter-base-a Letter-A"></div>
+    <div class="col-auto"><img src="{% static 'images/Letra-C gris.png' %}" class="img-fluid letter-base-c Letter-C"></div>
+    <div class="col-auto"><img src="{% static 'images/Letra-T gris.png' %}" class="img-fluid letter-base-t Letter-T"></div>
+  </div>
 
-<section id="Game-1">
+  <!-- ===== Letras grises A-C-T ===== -->
+  <div class="row justify-content-center g-3 mb-4">
+    <div class="col-auto"><img src="{% static 'images/letra-a gris.png' %}" class="img-fluid letter-base-a A-gray"></div>
+    <div class="col-auto"><img src="{% static 'images/Letra-C gris.png' %}" class="img-fluid letter-base-c C-gray"></div>
+    <div class="col-auto"><img src="{% static 'images/Letra-T gris.png' %}" class="img-fluid letter-base-t T-gray"></div>
+  </div>
+
+  <!-- ===== Letras animadas ===== -->
+  <div class="row justify-content-center g-3 mb-4 letters-animate">
+    <div class="col-auto"><img src="{% static 'images/R.png' %}" class="img-fluid letter-base-R Letra-R"></div>
+    <div class="col-auto"><img src="{% static 'images/Gráfico e.png' %}" class="img-fluid letter-base-e Letra-E"></div>
+    <div class="col-auto"><img src="{% static 'images/letra a...png' %}" class="img-fluid letter-base-a Letra-A"></div>
+    <div class="col-auto"><img src="{% static 'images/LETRA C.png' %}" class="img-fluid letter-base-c Letra-C"></div>
+    <div class="col-auto"><img src="{% static 'images/LETRA T..png' %}" class="img-fluid letter-base-t Letra-T"></div>
+    <div class="col-auto"><img src="{% static 'images/LETRA O.png' %}" class="img-fluid letter-base-o Letra-O"></div>
+    <div class="col-auto"><img src="{% static 'images/Letra-r..png' %}" class="img-fluid letter-base-r Letra-r"></div>
+  </div>
+
+  <!-- ===== TEXTO ===== -->
+  <section id="Game-1">
     <h2>Play2Learn</h2>
-    <p>We are passionate about creating engaging and effective learning experiences for both children and adults. Our games,<span class="highlight">“Anagram Hunts”</span>  and <span class="highlight">“Math Facts Practice,”</span> are designed to strengthen language and math skills through interactive challenges. We believe that learning should be an exciting adventure, and we are dedicated to developing tools that inspire and motivate our users to reach their full potential.</p>
-    </section>
-  </main>
+    <p>
+      We are passionate about creating engaging and effective learning experiences for both children and adults.
+      Our games,
+      <span class="highlight">“Anagram Hunts”</span> and
+      <span class="highlight">“Math Facts Practice,”</span>
+      are designed to strengthen language and math skills through interactive challenges.
+      We believe that learning should be an exciting adventure, and we are dedicated to developing tools that inspire and motivate our users to reach their full potential.
+    </p>
+  </section>
+
+</main>
+
+<!-- ===== SIGNOS MATEMÁTICOS ===== -->
+<div class="outside-signs row justify-content-center g-3 mb-5 math-signs">
+  <div class="col-auto"><img src="{% static 'images/Suma.png' %}" class="img-fluid suma"></div>
+  <div class="col-auto"><img src="{% static 'images/Resta.png' %}" class="img-fluid division"></div>
+  <div class="col-auto"><img src="{% static 'images/Multiplicacion.png' %}" class="img-fluid multiplicacion"></div>
+  <div class="col-auto"><img src="{% static 'images/Division.png' %}" class="img-fluid resta"></div>
+</div>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -70,5 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle("navbar-open");
   });
 });
-  </script>
+</script>
+
 {% endblock %}

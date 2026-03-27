@@ -1,3 +1,13 @@
+/* ======== GLOBAL ======== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+}
+
 body {
   background-color: rgb(183, 156, 201); /* morado */
   min-height: 100vh;
@@ -94,15 +104,91 @@ main > .text-center {
     font-size: 1.3rem;
 }
 
-/* Borde blanco SOLO en pantallas pequeñas */
-@media (max-width: 768px) {
+/* pantallas pequeñas */
+@media (max-width: 767.98px) {
   body {
+    height: 100vh;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     border-left: 15px solid rgb(24, 24, 24);
     border-right: 15px solid rgb(24, 24, 24);
     border-top: 10px solid rgb(24, 24, 24);
     border-bottom: 10px solid rgb(24, 24, 24);
   }
+  
+    .answer-box {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+   .stat-score{
+    position: relative;
+    left: 20px;
+  }
+
+  .stat-time {
+    position: relative;
+    left: -20px;
+  }
+  
+  h1 {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgb(183, 156, 201);
+    padding: 8px 0;
+    margin-top: 0;
+  }
 }
+
+/* ======== TABLET ======== */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  h1 {
+    font-size: 3.6rem !important;
+  }
+
+
+  .player-button {
+    font-size: 1.4rem !important;
+  }
+
+  #score,
+  #time,
+  .stat-score,
+  .stat-time {
+    font-size: 2.5rem !important;
+  }
+
+   .stat-score{
+    position: relative;
+    left: -30px;
+  }
+
+  .stat-time {
+    position: relative;
+    left: 50px;
+  }
+
+   #guess-input {
+    width: 250px !important;
+    height: 65px !important;
+    font-size: 2.2rem !important;
+    margin: 0 auto;
+  }
+
+   h2 {
+    font-size: 3rem !important;
+  }
+
+   #answers-list li {
+    font-size: 2.3rem;
+  }
+}
+
+  
 
 
 

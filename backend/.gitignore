@@ -1,16 +1,18 @@
-# Entorno virtual
-venv/
-.venv/
-
 # Python
 __pycache__/
 *.pyc
 
-# Base de datos
+# Virtual environment
+.venv/
+
+# Database
 db.sqlite3
 
-# Archivos del sistema
+# Static files
+staticfiles/
+
+# macOS
 .DS_Store
 
-# Variables de entorno
+# Environment variables
 .env

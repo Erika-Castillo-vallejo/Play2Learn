@@ -12,7 +12,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-    <div id="app"></div>
 <main>
 
       <!-- ===== NAVIGATION - NAVBAR ===== -->
@@ -59,8 +58,10 @@
     <div class="col-12 col-sm-10 col-md-8 col-lg-6">
      <div class="center-menu card p-3 shadow-sm text-center mx-auto">
       <ul class="list-unstyled mb-0">
-      <li class="Operation"><a href="#">Operation <i class="fas fa-chevron-down"></i></a>
-      <ul id="operation-list">
+
+      <li class="Operation open">
+  <a href="#" onclick="toggleOperationMenu(event)">Operation</a>
+  <ul id="operation-list">
         <li>
       <div class="operation-buttons">
         <button onclick="elegirJuego('addition')" class="btn btn-outline-primary mb-2" aria-label="Select addition game">Addition</button>
@@ -84,7 +85,9 @@
     </ol>
    </div>
   </div>
-</div>
+ </div>
+
+</main>
 
 <!-- ===== FOOTER ===== -->
 <footer class="bg-light py-4 mt-5">
@@ -106,7 +109,46 @@
     </div>
   </div>
 </footer>
-</main>
+<script>
+  let juegoElegido = "";
+
+  function elegirJuego(opcion) {
+  const confirmacion = confirm(`You chose ${opcion}. Do you want to continue?`);
+
+  if (confirmacion) {
+    juegoElegido = opcion;
+
+    // 🔥 CERRAR EL MENÚ
+    const menu = document.querySelector(".Operation");
+    if (menu) {
+      menu.classList.remove("open");
+    }
+
+    alert("Operation selected. Now press GO to start.");
+  } else {
+    alert("Selection cancelled.");
+  }
+}
+
+  function startGame() {
+    if (juegoElegido) {
+      localStorage.setItem("jugador", "");
+      localStorage.setItem("juegoElegido", juegoElegido);
+
+      if (juegoElegido === "addition") {
+        window.location.href = "/games/math/play/addition/";
+      } else if (juegoElegido === "subtraction") {
+        window.location.href = "/games/math/play/subtraction/";
+      } else if (juegoElegido === "multiplication") {
+        window.location.href = "/games/math/play/multiplication/";
+      } else if (juegoElegido === "division") {
+        window.location.href = "/games/math/play/division/";
+      }
+    } else {
+      alert("Please choose an operation first.");
+    }
+  }
+</script>
 </body>
   
   <!-- JS -->

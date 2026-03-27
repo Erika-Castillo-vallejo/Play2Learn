@@ -56,46 +56,37 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      jugador: "",
       wordLength: 5
     };
   },
 
-  methods : {
+  methods: {
     startAnagramGame() {
-   // Pedir nombre solo si no se ha ingresado
-  if (!this.jugador) {
-    this.jugador = prompt("What's your name?");
-    if (!this.jugador) {
-      alert("Please enter your name.");
-      return;
-    }
-  }
-  // Validar longitud
-  if (isNaN(this.wordLength) || this.wordLength < 4 || this.wordLength > 6) {
-    alert("Please enter a word length between 4 and 7.");
-    return;
+      // Validar longitud
+      if (isNaN(this.wordLength) || this.wordLength < 4 || this.wordLength > 6) {
+        alert("Please enter a word length between 4 and 6.");
+        return;
       }
-  // Confirmación
-  const confirmacion = confirm(
-    `You chose ${this.wordLength}-letter words, ${this.jugador}. Continue to the game?`
-  );
 
-  if (!confirmacion) {
-    alert("Selection cancelled.");
-    return;
-  }
+      // Confirmación sin nombre
+      const confirmacion = confirm(
+        `You chose ${this.wordLength}-letter words. Continue to the game?`
+      );
 
-    // Guardar en localStorage y navegar
-  localStorage.setItem("jugador", this.jugador);
-  localStorage.setItem("juegoElegido", "anagram-hunt");
-  localStorage.setItem("wordLength", this.wordLength);
-  
-  alert("Ready! The game will start now.");
-  window.location.href = "/games/anagram/play/";
-   }
+      if (!confirmacion) {
+        alert("Selection cancelled.");
+        return;
+      }
+
+      // Guardar en localStorage y navegar
+      localStorage.setItem("jugador", "");
+      localStorage.setItem("juegoElegido", "anagram-hunt");
+      localStorage.setItem("wordLength", this.wordLength);
+
+      alert("Ready! The game will start now.");
+      window.location.href = "/games/anagram/play/";
+    }
   }
 }).mount("#app");
 </script>
-
 {% endblock %}
