@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-z&n1g7_pkr6606e#spuznsqu=_e)+l*d79hlg)=(r)ar%f56bj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["play2learn-pp65.onrender.com", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = [
+    "play2learn-8ip3.onrender.com",
+    "127.0.0.1",
+    "localhost"
+]
 
 
 # Application definition
